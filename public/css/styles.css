@@ -1,7 +1,12 @@
+:root {
+    --primary: #325d79;
+    --secondary: #E7E6E1;
+    --white: #f7f7f7;
+}
+
 /* -----------------------resets-------------------- */
 body {
     overflow-x: hidden;
-    color: #f9f9f9;
     font-family: "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
@@ -12,6 +17,23 @@ li,
 figure {
     margin: 0;
     padding: 0;
+}
+
+h1 {
+    color: var(--white);
+    text-align: center;
+}
+
+.hero h1 span {
+    display: block;
+}
+
+h2 {
+    color: var(--primary);
+    background: var(--secondary);
+    text-align: center;
+    margin: 0;
+    padding: 2rem;
 }
 
 h2,
@@ -33,7 +55,7 @@ h4 {
 }
 
 a {
-    color: #f7f7f7;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -71,7 +93,7 @@ nav ul li:first-child {
 
 nav ul li a {
     text-decoration: none;
-    color: #f7f7f7;
+    color: var(--white);
     padding: 5px 15px;
 }
 
@@ -88,10 +110,10 @@ nav ul li a {
     top: 0.5em;
     width: 1em;
     height: 0.15em;
-    background: #f7f7f7;
+    background: var(--white);
     box-shadow:
-        0 0.25em 0 0 #f7f7f7,
-        0 0.5em 0 0 #f7f7f7;
+        0 0.25em 0 0 var(--white),
+        0 0.5em 0 0 var(--white);
 
 }
 
@@ -133,13 +155,6 @@ nav ul li a {
     min-height: 40vh;
 }
 
-/*---------------main-----------------------*/
-
-article {
-    padding: 2rem;
-}
-
-
 /*--------------Pagination Arrows-----------*/
 #prev {
     display: block;
@@ -169,6 +184,54 @@ article {
 
 main {
     color: #325d79;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+article.list-project {
+    max-width: 350px;
+    border: 1px solid #325d97;
+    background: var(--secondary);
+    margin: 1rem;
+}
+
+header.list-project-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.list-project-content {
+    width: 100%;
+    background: var(--secondary);
+    margin-top: 1rem;
+}
+
+article.list-project img {
+    display: block;
+    margin: 0 auto;
+}
+
+article.list-project p {
+    padding: 1rem;
+    text-align: center;
+    min-height: 72px;
+}
+
+footer.list-project-footer {
+    background: var(--secondary);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.btn {
+    color: var(--white);
+    background: var(--primary);
+    padding: 1rem 2rem;
 }
 
 .container {
@@ -256,7 +319,7 @@ article div {
 .button {
     display: block;
     background-color: #325d79;
-    color: #f7f7f7;
+    color: var(--white);
     margin: 40px auto;
     padding: 10px 15px;
     max-width: 200px;
@@ -324,7 +387,7 @@ figure.about:before {
     position: absolute;
     bottom: 20px;
     right: 50px;
-    color: #f7f7f7;
+    color: var(--white);
     font-variant: all-small-caps;
     text-shadow: 0 1px 1px rgb(50, 93, 121);
 }
@@ -332,7 +395,7 @@ figure.about:before {
 figure:after {
     content: "";
     position: absolute;
-    border: solid #f7f7f7;
+    border: solid var(--white);
     border-width: 0 3px 3px 0;
     padding: 3px;
     bottom: 25px;
@@ -381,13 +444,13 @@ article.project figure:after,
 
 footer {
     background-color: #325d79;
-    color: #f7f7f7;
+    color: var(--white);
     text-align: center;
     padding: 15px;
 }
 
 .social {
-    color: #f7f7f7;
+    color: var(--white);
 }
 
 

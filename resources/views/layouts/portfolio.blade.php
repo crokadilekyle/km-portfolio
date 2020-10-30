@@ -30,15 +30,15 @@
         </ul>
     </nav>
     <header class="hero">
-        <h1>Kyle Merl - Fullstack Web Developer</h1>
+        <h1><span>Kyle Merl </span>Fullstack Web Developer</h1>
     </header>
-    <main>
-        <section class="container">
 
-            @yield('content')
+    <section class="container">
 
-        </section>
-    </main>
+        @yield('content')
+
+    </section>
+
 
     <footer>
 
