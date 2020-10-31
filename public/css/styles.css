@@ -204,6 +204,10 @@ header.list-project-header {
     color: var(--primary);
 }
 
+a.list-project-title {
+    color: var(--primary);
+}
+
 .list-project-content {
     width: 100%;
     background: var(--secondary);

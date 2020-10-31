@@ -9,7 +9,14 @@ class ProjectController extends Controller
 {
     public function index(){
        $projects = Project::latest()->get();
-       return view('index', [
+       return view('public.index', [
+           'projects' => $projects,
+       ]);
+    }
+
+    public function admin(){
+       $projects = Project::latest()->get();
+       return view('projects', [
            'projects' => $projects,
        ]);
     }
@@ -28,8 +35,36 @@ class ProjectController extends Controller
         return  back();
     }
 
-    public function update(){
+    public function show($id){
+        $project = Project::findOrFail($id);
         
+        return view('project', [
+            'project' => $project,
+        ]);
+    }
+
+    public function details($id){
+        $project = Project::findOrFail($id);
+        
+        return view('public.details', [
+            'project' => $project,
+        ]);
+    }
+
+    public function update(Request $req, $id){
+        $featured_image = $req->file('featured_image')->store('featured_images');
+        $project = Project::findOrFail($id);
+        
+        $project->title = request('title');
+        $project->url = request('url');
+        $project->excerpt = request('excerpt');
+        $project->featured_image = $featured_image;
+        $project['project-trixFields'] = request('project-trixFields');
+        $project['attachment-project-trixFields'] = request('attachment-project-trixFields');
+
+        $project->save();
+        
+        return  back();
     }
 
     public function destroy(){

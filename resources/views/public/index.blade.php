@@ -6,11 +6,15 @@
     @foreach ($projects as $project)
     <article class="list-project">
         <header class="list-project-header">
-            <h3 class="list-project-title">{{ $project->title }}</h3>
+            <a href="/details/{{ $project->id }}" class="list-project-title">
+                <h3>{{ $project->title }}</h3>
+            </a>
         </header>
         <div class="list-project-content">
             @if($project->featured_image)
-            <img src="{{ asset('storage/'.$project->featured_image)}}" width="200px" height="200px" />
+            <a href="/details/{{ $project->id }}">
+                <img src="{{ asset('storage/'.$project->featured_image)}}" width="200px" height="200px" />
+            </a>
             @endif
 
             {{-- <div>{{ $project->trixRichText }}</div> --}}

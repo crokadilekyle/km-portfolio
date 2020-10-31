@@ -13,13 +13,19 @@ use App\Http\Controllers\ProjectController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [ProjectController::class, 'index']);
+Route::get('/', [ProjectController::class, 'index'])->name('home');
+Route::get('/details/{id}', [ProjectController::class, 'details']);
 Route::get('/about', function(){
-    return view('about');
+    return view('public.about');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum'])->get('/projects', [ProjectController::class, 'admin'])->name('projects');
+Route::middleware(['auth:sanctum'])->get('/project/{id}', [ProjectController::class, 'show']);
 Route::middleware(['auth:sanctum'])->post('/project', [ProjectController::class, 'store']);
+Route::middleware(['auth:sanctum'])->put('/project/{id}', [ProjectController::class, 'update']);
+
+
