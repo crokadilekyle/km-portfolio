@@ -29,15 +29,9 @@
             <li><a href="/about" alt="about">About</a></li>
         </ul>
     </nav>
-    <header class="hero">
-        <h1><span>Kyle Merl </span>Fullstack Web Developer</h1>
-    </header>
 
-    <section class="container">
+    @yield('content')
 
-        @yield('content')
-
-    </section>
 
 
     <footer>

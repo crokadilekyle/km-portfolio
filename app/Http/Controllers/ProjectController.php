@@ -52,13 +52,18 @@ class ProjectController extends Controller
     }
 
     public function update(Request $req, $id){
-        $featured_image = $req->file('featured_image')->store('featured_images');
+        $featured_image;
+        if($req->file('featured_image')){
+            $featured_image = $req->file('featured_image')->store('featured_images');
+        }
         $project = Project::findOrFail($id);
         
         $project->title = request('title');
         $project->url = request('url');
         $project->excerpt = request('excerpt');
-        $project->featured_image = $featured_image;
+        if ($req->has('featured_image')) {
+            $project->featured_image = $featured_image;
+        }
         $project['project-trixFields'] = request('project-trixFields');
         $project['attachment-project-trixFields'] = request('attachment-project-trixFields');
 
