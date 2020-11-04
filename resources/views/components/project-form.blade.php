@@ -21,6 +21,14 @@
             @endif
         </div>
         <div class="my-4">
+            <x-jet-label for="slug" value="{{ __('Project Slug') }}" />
+            @if($task == "Update Project")
+            <x-jet-input id="slug" class="block mt-1 w-full" type="text" name="slug" value="{{$project->slug}}" />
+            @else
+            <x-jet-input id="slug" class="block mt-1 w-full" type="text" name="slug" />
+            @endif
+        </div>
+        <div class="my-4">
             <x-jet-label for="excerpt" value="{{ __('Project Excerpt') }}" />
             @if($task == "Update Project")
             <x-jet-input id="excerpt" class="block mt-1 w-full" type="text" name="excerpt" value="{{$project->excerpt}}" />
@@ -39,11 +47,14 @@
             <x-jet-input id="featured_image" class="block mt-1 w-full" type="file" name="featured_image" />
             @endif
         </div>
-        @if($task == "Update Project")
-        @trix($project, 'content')
-        @else
-        @trix(\App\Models\Project::class, 'content')
-        @endif
+        <div class="my-4">
+            <x-jet-label for="project-trixFields[content]" value="{{ __('Project Content') }}" />
+            @if($task == "Update Project")
+            @trix($project, 'content')
+            @else
+            @trix(\App\Models\Project::class, 'content')
+            @endif
+        </div>
 
         <x-jet-button class="my-4">
             {{ __($task) }}

@@ -11,6 +11,7 @@
 
     <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
     <script src="https://use.fontawesome.com/9cead1c546.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
 </head>
 
 <body>
@@ -40,9 +41,19 @@
         <a href="https://www.linkedin.com/in/kyle-merl-29505280/" target="_blank"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true" style="color: #f7f7f7;"></i></a>
         <a href="https://github.com/crokadilekyle" target="_blank"><i class="fa fa-2x fa-github" aria-hidden="true" style="color: #f7f7f7;"></i></a>
 
-        <p>Kyle Merl</p>
-        <p>&copy <?php echo date("Y"); ?> All Rights Reserved.</p>
+        <p>&copy <?php echo date("Y"); ?> Kyle Merl</p>
     </footer>
     <script src="{{ asset('/js/functions.js') }}"></script>
+    <script>
+        var clipboard = new ClipboardJS('.copy-li');
+        clipboard.on('success', function(e) {
+            document.querySelector('.copied-success').classList.add('show');
+            setTimeout(() => {
+                document.querySelector('.copied-success').classList.remove('show');
+            }, 2000)
+        });
+
+    </script>
+
 </body>
 </html>

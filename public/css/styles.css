@@ -5,9 +5,17 @@
 }
 
 /* -----------------------resets-------------------- */
+html,
+body {
+    height: 100%;
+    background-color: var(--white);
+}
+
 body {
     overflow-x: hidden;
     font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 body,
@@ -17,6 +25,10 @@ li,
 figure {
     margin: 0;
     padding: 0;
+}
+
+button {
+    border: none;
 }
 
 h1 {
@@ -47,6 +59,7 @@ p {
     font-family: "Georgia", serif;
     letter-spacing: .5px;
     line-height: 1.5em;
+    font-size: 14pt;
 }
 
 h4 {
@@ -156,30 +169,31 @@ nav ul li a {
 }
 
 /*--------------Pagination Arrows-----------*/
-#prev {
-    display: block;
-    width: 0px;
-    height: 0px;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 20px solid #e7e6e1;
-    position: fixed;
-    top: 48vh;
-    left: 2vw;
-    cursor: pointer;
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    flex-shrink: 0;
 }
 
-#next {
-    display: block;
-    width: 0px;
-    height: 0px;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid #e7e6e1;
-    position: fixed;
-    top: 48vh;
-    right: 2vw;
-    cursor: pointer;
+.pagination a {
+    color: var(--primary);
+}
+
+.pagination a.next {
+    text-align: right;
+    margin-left: auto;
+}
+
+.pagination a.next i {
+    margin: 0 1rem 0 .3rem;
+}
+
+.pagination a i.fa.fa-arrow-left {
+    margin: 0 .3rem 0 0;
 }
 
 main {
@@ -188,13 +202,15 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 1rem 1rem;
 }
 
 article.list-project {
     max-width: 350px;
-    border: 1px solid #325d97;
     background: var(--secondary);
     margin: 1rem;
+    border-radius: 10px;
+    box-shadow: .5px .5px 7px #777;
 }
 
 header.list-project-header {
@@ -227,6 +243,8 @@ article.list-project p {
     min-height: 72px;
 }
 
+/* -----------------About Page------------------------- */
+
 h2#about {
     padding-top: 4rem;
     padding-bottom: 8rem;
@@ -243,7 +261,75 @@ img.profilepic {
 
 .content {
     width: 80%;
+    max-width: 800px;
     margin: 0 auto;
+    color: var(--primary);
+    margin-top: -6rem;
+}
+
+.tags-list {
+    border-radius: 10px;
+    background: var(--white);
+}
+
+ul.tags {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.email {
+    align-items: center;
+}
+
+.copied-success {
+    opacity: 0;
+    transition: opacity .2s ease-in;
+}
+
+.copied-success.show {
+    opacity: 1;
+    transition: opacity .2s ease-out;
+}
+
+ul.tags li,
+span.tag {
+    list-style: none;
+    margin: .4rem;
+    padding: .2rem .5rem;
+    background: var(--secondary);
+    border-radius: 10px;
+    box-shadow: .2px .2px 5px #777;
+}
+
+/* ------------------Project Details Page------------------------ */
+
+.project-content {
+    margin: 3rem auto 0;
+    max-width: 800px;
+    font-size: 14pt;
+}
+
+.project-content a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.project-details-img {
+    max-width: 80%;
+    max-height: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+.project-content ul {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.project-content div {
+    margin-bottom: 1rem;
 }
 
 footer.list-project-footer {
@@ -251,219 +337,65 @@ footer.list-project-footer {
     display: flex;
     justify-content: center;
     align-content: center;
+    border-radius: 0 0 10px 10px;
 }
 
 .btn {
     color: var(--white);
     background: var(--primary);
     padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 7px #777;
+}
+
+.btn-sm {
+    padding: .2rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
+
+.copy-li {
+    display: flex;
+}
+
+.copy-li:hover {
+    cursor: pointer;
+}
+
+.copy-li:hover .btn-sm i {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.btn-sm:hover i {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.secondary {
+    background: var(--secondary);
+}
+
+.btn:hover {
+    box-shadow: none;
+    opacity: 1;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 
 .container {
-    /* display: grid;
-    grid-template-columns: 10% 1fr 10%; */
     width: 80vw;
-    /*min-height: 900px;*/
     background-color: #E7E6E1;
     margin: 0 auto;
-}
-
-.webprojectdetails {
-    grid-column: 1 / 4;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin: 10px;
-}
-
-.webprojectcopy {
-    background-color: #f2f2f2;
-    padding: 10px;
-    margin: 20px;
-    box-shadow: 0px 3px 3px rgba(87, 87, 87, 0.4);
-}
-
-.webprojectcopy ul {
-    margin-left: 20px;
-}
-
-/*class for wireframes container*/
-.wireframes {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto auto;
-    grid-auto-flow: dense;
-    justify-items: center;
-    margin: 20px;
-}
-
-.wireframesKyle {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-    grid-auto-flow: dense;
-    justify-items: center;
-    margin: 20px;
-}
-
-/*class for each wireframe image*/
-.wireframe {
-    margin-bottom: 20px;
-}
-
-.col-1 {
-    grid-column-start: 1;
-}
-
-.col-2 {
-    grid-column-start: 2;
-}
-
-/* 
-article {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 500px;
-    grid-column-start: 2;
-    justify-items: center;
-    align-items: center;
-}
-
-article#about {
-    grid-template-rows: 400px;
-}
-
-article div {
-    grid-column-start: 8;
-    grid-column-end: 13;
-    margin: 20px;
-    padding: 10px;
-    background-color: #f2f2f2;
-    box-shadow: 0px 3px 3px rgba(87, 87, 87, 0.4);
-} */
-
-.button {
-    display: block;
-    background-color: #325d79;
-    color: var(--white);
-    margin: 40px auto;
-    padding: 10px 15px;
-    max-width: 200px;
-    width: 75vw;
-    text-align: center;
-    border-radius: 2px;
-    box-shadow: 0px 3px 3px rgba(87, 87, 87, 0.4);
-}
-
-.button a {
-    text-decoration: none;
-}
-
-.button:hover {
-    cursor: pointer;
-    box-shadow: none;
-}
-
-figure {
-    position: relative;
-    grid-column-start: 1;
-    grid-column-end: 7;
+    flex: 1 0 auto;
     display: flex;
-    justify-content: center;
-    margin: 20px;
+    flex-direction: column;
 }
 
-article#about figure img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    box-shadow: 0px 3px 3px rgba(87, 87, 87, 0.4);
+.container main {
+    flex: 1 0 auto;
 }
 
-figure img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    box-shadow: 0px 3px 3px rgba(87, 87, 87, 0.4);
-}
-
-figure img:hover,
-article#about figure img:hover {
-    box-shadow: none;
-    border: .5px solid rgba(50, 93, 121, .5);
-}
-
-.even {
-    grid-auto-flow: dense;
-}
-
-article.even div {
-    grid-column-start: 1;
-    grid-column-end: 6;
-}
-
-.even figure {
-    grid-column-start: 7;
-    grid-column-end: 13;
-}
-
-figure:before,
-figure.about:before {
-    content: "See More";
-    position: absolute;
-    bottom: 20px;
-    right: 50px;
-    color: var(--white);
-    font-variant: all-small-caps;
-    text-shadow: 0 1px 1px rgb(50, 93, 121);
-}
-
-figure:after {
-    content: "";
-    position: absolute;
-    border: solid var(--white);
-    border-width: 0 3px 3px 0;
-    padding: 3px;
-    bottom: 25px;
-    right: 25px;
-    transform: rotate(-45deg);
-}
-
-figure.about:before {
-    content: "About Me";
-}
-
-article.project {
-    grid-template-rows: 400px;
-}
-
-article.project figure:before,
-article.project figure:after,
-.stuff figure:before,
-.stuff figure:after {
-    display: none;
-}
-
-.project {
-    opacity: 1;
-    transition: all 1s;
-}
-
-.stuff {
-    grid-column-start: 2;
-    margin: 0 auto 50px;
-    max-width: 775px;
-
-}
-
-.stuff img {
-    max-width: 398px;
-}
-
-/*-----------------------WTHA Page--------------------*/
-.banner {
-    width: 80vw;
-    grid-column: 1 / 4;
-}
 
 /* ----------------------footer ----------------------*/
 
@@ -472,6 +404,7 @@ footer {
     color: var(--white);
     text-align: center;
     padding: 15px;
+    flex-shrink: 0;
 }
 
 .social {
@@ -521,12 +454,14 @@ footer {
 }
 
 @media screen and (max-width: 700px) {
-    #prev {
-        border-right: 20px solid #fff;
+    .pagination {
+        flex-direction: column;
+        justify-content: center;
     }
 
-    #next {
-        border-left: 20px solid #fff;
+    .pagination a {
+        margin: 1rem auto;
+        text-align: center;
     }
 
     .container {
@@ -545,19 +480,6 @@ footer {
         visibility: visible;
         opacity: 1;
         transition: all .5s;
-    }
-
-    .banner {
-        width: 100vw;
-        grid-column: 1 / 4;
-    }
-
-    .webprojectdetails {
-        grid-column: 1 / 4;
-    }
-
-    .wireframesKyle img {
-        width: 300px;
     }
 }
 

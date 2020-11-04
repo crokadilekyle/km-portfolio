@@ -13,13 +13,13 @@
         @foreach ($projects as $project)
         <article class="list-project">
             <header class="list-project-header">
-                <a href="/details/{{ $project->id }}" class="list-project-title">
+                <a href="/details/{{ $project->slug }}" class="list-project-title">
                     <h3>{{ $project->title }}</h3>
                 </a>
             </header>
             <div class="list-project-content">
                 @if($project->featured_image)
-                <a href="/details/{{ $project->id }}">
+                <a href="/details/{{ $project->slug }}">
                     <img src="{{ asset('storage/'.$project->featured_image)}}" width="200px" height="200px" />
                 </a>
                 @endif
@@ -30,7 +30,7 @@
             </div>
             <!--list-project-content-->
             <footer class="list-project-footer">
-                <a class="btn list-project-url" href=" {{ $project->url }}" alt={{ $project->url }}>Visit the Site</a>
+                <a class="btn" href="/details/{{ $project->slug }}" alt={{ $project->title }}>Project Details</a>
             </footer>
         </article>
         @endforeach

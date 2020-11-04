@@ -26,6 +26,7 @@ class ProjectController extends Controller
         Project::create([
             'title' => request('title'),
             'url' => request('url'),
+            'slug' => request('slug'),
             'excerpt' => request('excerpt'),
             'featured_image' => $featured_image,
             'project-trixFields' => request('project-trixFields'),
@@ -43,11 +44,17 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function details($id){
-        $project = Project::findOrFail($id);
-        
+    public function details($slug){
+        $project = Project::where('slug', $slug)->first();
+        $previous = Project::where('id', '>', $project->id)->min('id');
+        $previous_project = Project::where('id', $previous)->first();
+        $next = Project::where('id', '<', $project->id)->max('id');
+        $next_project = Project::where('id', $next)->first();
+
         return view('public.details', [
             'project' => $project,
+            'next' => $next_project,
+            'previous' => $previous_project,
         ]);
     }
 
@@ -60,6 +67,7 @@ class ProjectController extends Controller
         
         $project->title = request('title');
         $project->url = request('url');
+        $project->slug = request('slug');
         $project->excerpt = request('excerpt');
         if ($req->has('featured_image')) {
             $project->featured_image = $featured_image;
