@@ -1,4 +1,61 @@
 /*eslint-env browser*/
+
+// -----onload transitions-------
+const projects = document.querySelectorAll('.list-project');
+// const aboutContent = document.querySelector('.about-content');
+const aboutContent = document.querySelector('.content');
+let aboutContentChildren = [];
+const profilePic = document.querySelector('.profilepic');
+
+if (projects) {
+	projects.forEach(function (project) {
+		project.style.opacity = 0;
+		project.style.transform = 'translateY(20px)';
+	});
+}
+
+if (aboutContent) {
+	aboutContentChildren =  Array.from(aboutContent.children);
+	aboutContentChildren.forEach(function (child) {
+		child.style.opacity = 0;
+	})
+}
+
+if (profilePic) {
+	profilePic.style.opacity = 0;
+	profilePic.style.transform = "translateY(-9rem)";
+}
+
+window.onload = function () {
+	if (projects) {
+		projects.forEach(function (project) {
+			project.style.removeProperty('opacity');
+			project.style.removeProperty('transform');
+			project.classList.add('loaded');
+		});
+	}
+
+	if (aboutContent) {
+		aboutContentChildren.forEach(show);
+	}
+	
+	function show(child, index) {
+		setTimeout(function () {
+			child.style.removeProperty('opacity');
+			child.classList.add('show');
+		}, index*100)
+	}
+
+	if (profilePic) {
+		profilePic.style.removeProperty('opacity');
+		profilePic.style.removeProperty('transform');
+		profilePic.classList.add('loaded');
+	}
+}
+
+
+
+
 //------menu button toggle--------
 var menu = document.querySelector(".menu");
 var toggle = document.querySelector(".toggler");
@@ -23,11 +80,6 @@ window.onscroll = function() {
 	this.scroll = this.scrollY;
 }
 
-//----------removes branding caused by fa------------------
-
-document.querySelector("nav.navbar ul").firstChild.remove();
-
-
 //------smooth scroll for projects page skip button ---------
 
 var button = document.querySelector(".button");
@@ -45,19 +97,3 @@ if (link != null){
 		return false;
 	}	
 }
-
-//------------add "even" class to every other article tag | only on home page--------------
-
-
-var articles = document.querySelectorAll("ARTICLE");
-var about = document.getElementById("about");
-
-if (about != null){
-	var i;
-	for (i = 0; i < articles.length; i++) {
-		if(i%2 != 0){
-			articles[i].classList.add("even");
-		}
-	}
-}
-

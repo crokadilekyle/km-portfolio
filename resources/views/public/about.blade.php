@@ -5,7 +5,7 @@
     <article>
         <h2 id="about">Hi. I'm Kyle.</br> Full Stack Web Developer near Waco, TX.</h2>
         <img src="{{ asset('/storage/public/profilepic.jpg')}}" width="200px" height="200px" class="profilepic" />
-        <div class="content">
+        <div class="content about-content">
             <p>I first started coding websites back in the days of "clears" and "floats". Thankfully, the web has come a long way since then.</p>
             <p>Fast forward to {{ now()->year }} and I find myself much more interested in the data that makes modern websites work. It is amazing to me how much a website can do today. It's also amazing to me how many different tools we have at our disposal for creating these modern websites.</p>
             <p>So, which tools are the best? I believe there is no "one size fits all" approach to building websites and web apps. The requriements of the project determines which tools are best suited for the job. Sometimes a client side rendered SPA, using something like React or Vue, is the way to go. Other times a server rendered, multi-page application using something like Laravel or Django is a better approach. In other cases, a simple WordPress site is more than capable of getting the job done. I think one of a web developer's responsibilies is to be familiar with all of the different approaches and technologies available to them so they can choose the best stack to use when building a project. This is why I am committed to learning as many different technologies as I can.</p>

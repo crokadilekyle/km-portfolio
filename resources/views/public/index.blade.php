@@ -5,9 +5,6 @@
     <h1><span>Kyle Merl </span>Fullstack Web Developer</h1>
 </header>
 <section class="container">
-
-
-
     <h2>Recent Projects</h2>
     <main>
         @foreach ($projects as $project)
