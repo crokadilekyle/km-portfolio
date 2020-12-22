@@ -7,7 +7,11 @@
     </a>
     <main style="flex-direction: column; justify-content: center">
         <img class="project-details-img" src="{{ asset('storage/'.$project->featured_image)}}" />
-        <div class="project-content">{!! $project->trixRender('content') !!}</div>
+        {{-- <div class="project-content">{!! $project->trixRender('content') !!}</div> --}}
+        <div class="content project-content">{!! $project->trixRender('content') !!}
+            <p><a href="{{$project->url}}" target="_blank" rel="noopener noreferrer">Visit the site</a></p>
+        </div>
+
 
         <div class="pagination">
             @if($previous)
