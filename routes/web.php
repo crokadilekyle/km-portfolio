@@ -8,6 +8,9 @@ Route::get('/details/{slug}', [ProjectController::class, 'details']);
 Route::get('/about', function(){
     return view('public.about');
 });
+Route::get('/sandbox', function(){
+    return view('public.sandbox');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
