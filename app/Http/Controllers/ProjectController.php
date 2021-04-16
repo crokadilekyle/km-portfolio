@@ -83,4 +83,10 @@ class ProjectController extends Controller
     public function destroy(){
         
     }
+
+    public function temperature($temp){
+        return view('public.temperature', [
+            "temperature" => $temp,
+        ]);
+    }
 }

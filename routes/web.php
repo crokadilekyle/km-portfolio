@@ -21,4 +21,10 @@ Route::middleware(['auth:sanctum'])->get('/project/{id}', [ProjectController::cl
 Route::middleware(['auth:sanctum'])->post('/project', [ProjectController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/project/{id}', [ProjectController::class, 'update']);
 
+Route::get('/temperature/{temp}', [ProjectController::class, 'temperature']);
+
+Route::get('/hello', function(){
+    return "hello world";
+});
+
 
