@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TemperaturesController;
 
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::get('/details/{slug}', [ProjectController::class, 'details']);
@@ -21,7 +22,8 @@ Route::middleware(['auth:sanctum'])->get('/project/{id}', [ProjectController::cl
 Route::middleware(['auth:sanctum'])->post('/project', [ProjectController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/project/{id}', [ProjectController::class, 'update']);
 
-Route::get('/temperature/{temp}', [ProjectController::class, 'temperature']);
+Route::get('/temperature', [TemperaturesController::class, 'index']);
+Route::post('/temperature', [TemperaturesController::class, 'create']);
 
 Route::get('/hello', function(){
     return "hello world";
