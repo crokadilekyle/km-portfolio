@@ -9,5 +9,5 @@ class Temperature extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room', 'temperature'];
+    protected $fillable = ['room', 'temperature', 'humidity'];
 }
