@@ -10,7 +10,7 @@ class TemperaturesController extends Controller
 {
     public function index(){
         $temperature = Temperature::orderByDesc('created_at')->first();
-        $latestPull = Carbon::parse($temperature->created_at)->format('m/d/Y - h:mm');
+        $latestPull = Carbon::parse($temperature->created_at)->format('m/d/Y - h:m');
 
         return view('temperature/index', [
             'temperature' => Temperature::orderByDesc('created_at')->first(),
