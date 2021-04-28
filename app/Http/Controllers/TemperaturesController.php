@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Temperature;
+use Carbon\Carbon;
 
 class TemperaturesController extends Controller
 {
     public function index(){
+        $temperature = Temperature::orderByDesc('created_at')->first();
+        $latestPull = Carbon::parse($temperature->created_at)->format('m/d/Y - h:mm');
+
         return view('temperature/index', [
-            'temperatures' => Temperature::all(),
+            'temperature' => Temperature::orderByDesc('created_at')->first(),
+            'latestPull' => $latestPull,
+            'rooms' => Temperature::distinct('room')->count('room'),
         ]);
     }
 
