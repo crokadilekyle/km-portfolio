@@ -9,11 +9,11 @@ use Carbon\Carbon;
 class TemperaturesController extends Controller
 {
     public function index(){
-        $temperature = Temperature::orderByDesc('created_at')->first();
+        $temperature = Temperature::orderBy('created_at','desc')->first();
         $latestPull = Carbon::parse($temperature->created_at)->format('m/d/Y - h:m');
 
         return view('temperature/index', [
-            'temperature' => Temperature::orderByDesc('created_at')->first(),
+            'temperature' => $temperature,
             'latestPull' => $latestPull,
             'rooms' => Temperature::distinct('room')->count('room'),
         ]);

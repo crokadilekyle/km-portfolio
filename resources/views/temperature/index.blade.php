@@ -12,8 +12,8 @@
             </header>
             <div class="list-project-content">
                 <p>Current Temperature:<br>{{ $temperature->temperature }}&#176C</p>
-                <p>Current Reltive Humidity:<br>{{ $temperature->humidity }}%</p>
-                <p>Last Reading:<br>{{ $latestPull }}</p>
+                <p>Current Relative Humidity:<br>{{ $temperature->humidity }}%</p>
+                <p>Last Reading:<br>{{ $temperature->created_at }}</p>
             </div>
         </article>
 
